@@ -1,0 +1,101 @@
+
+.container {
+  border: 1px dotted green;
+  width: 90%;
+  height: 500px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube {
+  width: 400px;
+  height: 400px;
+  border: 1px solid green;
+  perspective: 500px;
+  color: transparent;
+}
+
+.cube > .faces {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  border: 1px solid orange;
+  font-size: 50px;
+  text-align: center;
+  line-height: 400px;
+}
+
+.cube > .ball {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  z-index: 1000;
+}
+
+.cube:hover .b1 {
+  background-image: radial-gradient(white, orange);
+  animation: bounce 10s 10;
+}
+
+.cube:hover .b2 {
+  background-image: radial-gradient(white, red);
+  animation: bounce 10s 10 -4s;
+}
+
+.cube:hover .b3 {
+  background-image: radial-gradient(white, blue);
+  animation: bounce 10s 10 -8s;
+}
+
+.cube .front {
+  z-index: 1;
+}
+
+.cube > .back {
+  transform: translateZ(-400px);
+}
+
+.cube > .left {
+  transform: rotateY(90deg);
+  transform-origin: left;
+}
+
+.cube > .right {
+  transform: rotateY(-90deg);
+  transform-origin: right;
+}
+
+.cube > .top {
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}
+
+.cube > .bottom {
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(175px, 175px, -175px);
+  }
+
+  25% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(350px, 350px, -350px);
+  }
+
+  75% {
+    transform: translate3d(0, 350px, 0);
+  }
+
+  100% {
+    transform: translate3d(350px, 350px, 0);
+  }
+}
